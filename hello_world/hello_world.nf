@@ -1,30 +1,6 @@
-process sayHello {
 
-    input:
-        val greeting
-
-    output:
-        stdout
-    
-    script:
-    """
-    echo '$greeting'
-    """
-}
-
-process convertToUpper {
-
-    input:
-        val lower
-
-    output:
-        stdout
-
-    script:
-    """
-    echo '$lower' | tr '[a-z]' '[A-Z]'
-    """
-}
+include { sayHello       } from './modules/sayHello.nf'
+include { convertToUpper } from './modules/convertToUpper.nf'
 
 workflow {
 
